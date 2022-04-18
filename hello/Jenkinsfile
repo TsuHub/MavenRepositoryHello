@@ -7,25 +7,25 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'gradle assemble'
+                sh 'mvn build'
             }
         }
          stage('Test') {
             steps {
                 echo 'Testing...'
-                sh 'gradle test'
+                sh 'mvn test'
             }
         }
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                sh 'gradle docker'
+                sh 'mvn docker'
             }
         }
         stage('Run Docker Image') {
             steps {
                 echo 'Running Docker image...'
-                sh 'gradle dockerRun'
+                sh 'mvn dockerRun'
             }
         }
     }
