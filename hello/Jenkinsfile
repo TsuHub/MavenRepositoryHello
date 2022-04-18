@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM '* * * * *'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                sh 'gradle assemble'
+            }
+        }
+         stage('Test') {
+            steps {
+                echo 'Testing...'
+                sh 'gradle test'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                sh 'gradle docker'
+            }
+        }
+        stage('Run Docker Image') {
+            steps {
+                echo 'Running Docker image...'
+                sh 'gradle dockerRun'
+            }
+        }
+    }
+}
