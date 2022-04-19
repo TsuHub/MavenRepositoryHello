@@ -2,45 +2,38 @@
 pipeline
 {
     agent any
-//     environment {
-//         WORKSPACE="${WORKSPACE}/MavenHello/hello"
-//     }
+
     triggers {
         pollSCM '* * * * *'
     }
     stages
     {
-        dir("workspace/MavenHello/hello")
+        stage('Build')
         {
-            sh "pwd"
-            stage('Build')
+            steps
             {
-                steps
-                {
-                    sh 'mvn clean'
-                    sh 'mvn install -Dmaven.test.skip=true'
-                }
-            }
-
-            stage('Tests')
-            {
-                steps
-                {
-                    echo 'Tests'
-                    sh 'mvn test'
-                }
-            }
-
-            stage('Release')
-            {
-                steps
-                {
-                    echo 'Release'
-                    sh 'mvn package -Dmaven.test.skip=true'
-                }
+                sh 'mvn clean'
+                sh 'mvn install -Dmaven.test.skip=true'
             }
         }
 
+        stage('Tests')
+        {
+            steps
+            {
+                echo 'Tests'
+                sh 'mvn test'
+            }
+        }
+
+        stage('Release')
+        {
+            steps
+            {
+                echo 'Release'
+                sh 'mvn package -Dmaven.test.skip=true'
+            }
+        }
     }
 }
 //*/
