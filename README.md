@@ -2,7 +2,7 @@
 
 </br>
 
-## Technologies
+## Technologies and descriptions
 <table>
   <tr>
     <th>Technologies</th><th>Descriptions</th>
