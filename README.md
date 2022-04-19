@@ -1,5 +1,4 @@
 # MavenRepositorieHello
-</br>
 The project consists of a study material on the integration of technologies and the functioning of their interactions.
 </br>
 
