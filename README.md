@@ -14,7 +14,7 @@ The project consists of a study material on the integration of technologies and 
     <th>Springboot v2.6.6</br>&emsp;Spring Initializr</th>   <th>To create Web project with Java</br>&emsp;Creating the project base and its settings</th>
   </tr>
   <tr>
-    <th>Apache Maven 3.8.5</th>   <th>To manage dependencies (in pom.xml) and build aplication</th>
+    <th>Apache Maven 3.8.5</th>   <th>To manage dependencies (in pom.xml) and build application</th>
   </tr>
   <tr>
     <th>Docker 20.10.14</br>&emsp;Dockerfile</th>   <th>For image containerization</br>&emsp;Script for creating the image that contains the technologies for the operation of the application</th>
