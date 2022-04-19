@@ -29,5 +29,13 @@ pipeline
                 sh 'mvn package -Dmaven.test.skip=true'
             }
         }
+
+        stage('Update image')
+        {
+            steps {
+                echo 'TESTE: Update image'
+                sh 'docker --version'
+            }
+        }
     }
 }
