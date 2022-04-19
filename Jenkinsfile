@@ -30,12 +30,12 @@ pipeline
             }
         }
 
-        stage('Update image')
-        {
-            steps {
-                echo 'TESTE: Update image'
-                sh 'docker --version'
-            }
-        }
+//         stage('Update image')
+//         {
+//             steps {
+//                 echo 'TESTE: Update image'
+//                 sh 'docker --version'
+//             }
+//         }
     }
 }
