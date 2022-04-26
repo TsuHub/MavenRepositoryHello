@@ -21,14 +21,14 @@ pipeline
             }
         }
 
-        stage('Tests')
-        {
-            steps
-            {
-                echo 'Tests'
-                sh 'mvn test'
-            }
-        }
+//         stage('Tests')
+//         {
+//             steps
+//             {
+//                 echo 'Tests'
+//                 sh 'mvn test'
+//             }
+//         }
 
         stage('Release')
         {
@@ -44,6 +44,13 @@ pipeline
 //             steps {
 //                 echo 'TESTE: Update image'
 //                 sh 'docker --version'
+//             }
+//         }
+
+//         stage('Build Image')
+//         {
+//             steps {
+//                 sh 'docker build -t '
 //             }
 //         }
     }
