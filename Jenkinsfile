@@ -10,7 +10,13 @@ pipeline
         {
             steps
             {
+                echo 'CURRENT PATH: '
+                sh 'pwd'
+
                 dir("MavenRepositoryHello") {
+                    echo 'UPDATED PATH'
+                    sh 'pwd'
+                    
                     sh 'mvn clean'
                     sh 'mvn install -Dmaven.test.skip=true'
                 }
