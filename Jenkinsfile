@@ -47,12 +47,12 @@ pipeline
 //             }
 //         }
 
-//         stage('Build Image')
-//         {
-//             steps {
-//                 sh 'docker build -t '
-//             }
-//         }
+        stage('Build Image')
+        {
+            steps {
+                sh 'docker build -t hello .'
+            }
+        }
     }
 }
 
