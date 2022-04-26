@@ -50,7 +50,7 @@ pipeline
         stage('Build Image')
         {
             steps {
-                sh 'sudo docker build -t hello:latest .'
+                sh 'docker build -t hello:latest .'
             }
         }
     }
