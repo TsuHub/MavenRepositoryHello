@@ -48,7 +48,7 @@
 
 #=======================================================================================================================
 #=======================================================================================================================
- Ambiente Linux EC2 com JDK 11, Maven e Docker - Necessário apenas o build do projeto.
+#Ambiente Linux EC2 com JDK 11, Maven e Docker - Necessário apenas o build do projeto.
 
 FROM adoptopenjdk/openjdk11:alpine-jre
 
