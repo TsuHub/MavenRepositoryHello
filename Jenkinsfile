@@ -13,13 +13,11 @@ pipeline
                 echo 'CURRENT PATH: '
                 sh 'pwd'
 
-                dir("MavenRepositoryHello") {
-                    echo 'UPDATED PATH'
-                    sh 'pwd'
+                echo 'UPDATED PATH'
+                sh 'pwd'
 
-                    sh 'mvn clean'
-                    sh 'mvn install -Dmaven.test.skip=true'
-                }
+                sh 'mvn clean'
+                sh 'mvn install -Dmaven.test.skip=true'
             }
         }
 
@@ -27,10 +25,8 @@ pipeline
         {
             steps
             {
-                dir("MavenRepositoryHello") {
-                    echo 'Tests'
-                    sh 'mvn test'
-                }
+                echo 'Tests'
+                sh 'mvn test'
             }
         }
 
@@ -38,10 +34,8 @@ pipeline
         {
             steps
             {
-                dir("MavenRepositoryHello") {
-                    echo 'Release'
-                    sh 'mvn package -Dmaven.test.skip=true'
-                }
+                echo 'Release'
+                sh 'mvn package -Dmaven.test.skip=true'
             }
         }
 
