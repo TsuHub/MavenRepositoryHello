@@ -49,11 +49,8 @@ pipeline
 
         stage('Build Image')
         {
-            steps
-            {
-                dir('target') {
-                    sh 'docker build -t hello:latest .'
-                }
+            steps {
+                sh 'docker build -t hello:latest .'
             }
         }
     }
