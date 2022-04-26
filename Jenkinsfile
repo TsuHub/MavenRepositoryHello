@@ -17,7 +17,7 @@ pipeline
                 sh 'pwd'
 
                 sh 'mvn clean'
-                sh 'mvn install -Dmaven.test.skip=true'
+                //sh 'mvn install -Dmaven.test.skip=true'
             }
         }
 
