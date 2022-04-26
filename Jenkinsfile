@@ -8,7 +8,7 @@ pipeline
     {
         stage('Build')
         {
-            dir('/aws-mvn-hello/MavenRepositoryHello')
+            dir("aws-mvn-hello/MavenRepositoryHello")
             {
                 steps {
                     sh 'mvn clean'
@@ -19,7 +19,7 @@ pipeline
 
         stage('Tests')
         {
-            dir('/aws-mvn-hello/MavenRepositoryHello')
+            dir("aws-mvn-hello/MavenRepositoryHello")
             {
                 steps {
                     echo 'Tests'
@@ -30,7 +30,7 @@ pipeline
 
         stage('Release')
         {
-            dir('/aws-mvn-hello/MavenRepositoryHello')
+            dir("aws-mvn-hello/MavenRepositoryHello")
             {
                 steps {
                     echo 'Release'
