@@ -53,6 +53,13 @@ pipeline
                 sh 'docker build -t hello:latest .'
             }
         }
+
+        stage('Run image on Container')
+        {
+            steps {
+                sh 'docker run --rm -d -p 8080:8080 --name WebhookJenkins hello'
+            }
+        }
     }
 }
 
