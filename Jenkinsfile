@@ -52,7 +52,7 @@ pipeline
             dir('target')
             {
                 steps {
-                    sh 'docker build -t hello:0.0.1-SNAPSHOT .'
+                    sh 'docker build -t hello:latest .'
                 }
             }
         }
