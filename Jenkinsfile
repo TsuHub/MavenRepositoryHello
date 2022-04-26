@@ -49,8 +49,11 @@ pipeline
 
         stage('Build Image')
         {
-            steps {
-                sh 'docker build -t hello:0.0.1-SNAPSHOT .'
+            dir('target')
+            {
+                steps {
+                    sh 'docker build -t hello:0.0.1-SNAPSHOT .'
+                }
             }
         }
     }
