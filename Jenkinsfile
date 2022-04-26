@@ -8,9 +8,9 @@ pipeline
     {
         stage('Build')
         {
-            dir("MavenRepositoryHello")
+            steps
             {
-                steps {
+                dir("MavenRepositoryHello") {
                     sh 'mvn clean'
                     sh 'mvn install -Dmaven.test.skip=true'
                 }
@@ -19,9 +19,9 @@ pipeline
 
         stage('Tests')
         {
-            dir("MavenRepositoryHello")
+            steps
             {
-                steps {
+                dir("MavenRepositoryHello") {
                     echo 'Tests'
                     sh 'mvn test'
                 }
@@ -30,9 +30,9 @@ pipeline
 
         stage('Release')
         {
-            dir("MavenRepositoryHello")
+            steps
             {
-                steps {
+                dir("MavenRepositoryHello") {
                     echo 'Release'
                     sh 'mvn package -Dmaven.test.skip=true'
                 }
