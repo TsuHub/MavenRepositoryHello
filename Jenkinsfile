@@ -53,30 +53,27 @@ pipeline
             }
         }
 
-        parallel firstBranch:
+        stage('Upload image & Update container')
         {
-            stage('Push image to Docker Hub')
+            steps
             {
-                build job: 'Pushing image', parameters: [string(name: 'Environment', value: "$env.Environment")]
+                echo 'Login'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 
-                steps {
-                    echo 'Login'
-                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                }
+                parallel(
+                    uploadImage: {
+                        echo "Upload Image branch"
 
-                steps {
-                    //  docker tag local-image:tagname new-repo:tagname
-                    sh 'docker tag hello:latest tsudockerhub/aws-webhook:latest'
+                        //  docker tag local-image:tagname new-repo:tagname
+                        sh 'docker tag hello:latest tsudockerhub/aws-webhook:latest'
 
-                    //  docker push new-repo:tagname
-                    sh 'docker push tsudockerhub/aws-webhook:latest'
-                }
-            }
-        },
-        secondBranch:
-        {
-            stage ('Update container') {
-                build job: 'Updating container', parameters: [string(name: 'Environment', value: "$env.Environment")]
+                        //  docker push new-repo:tagname
+                        sh 'docker push tsudockerhub/aws-webhook:latest'
+                    },
+                    updateContainer: {
+                        echo "Update Container branch"
+                    }
+                )
             }
         }
     }
