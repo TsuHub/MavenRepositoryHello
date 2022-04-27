@@ -12,11 +12,11 @@ pipeline
         {
             steps
             {
-                echo 'CURRENT PATH: '
-                sh 'pwd'
-
-                echo 'UPDATED PATH'
-                sh 'pwd'
+//                 echo 'CURRENT PATH: '
+//                 sh 'pwd'
+//
+//                 echo 'UPDATED PATH'
+//                 sh 'pwd'
 
                 sh 'mvn clean'
                 //sh 'mvn install -Dmaven.test.skip=true'
