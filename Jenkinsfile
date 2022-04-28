@@ -10,10 +10,12 @@ pipeline
     {
         stage('Build')
         {
-            steps {
-                sh 'mvn clean'
-                //sh 'mvn install -Dmaven.test.skip=true'
-            }
+			timeout(30) {
+				steps {
+					sh 'mvn clean'
+					//sh 'mvn install -Dmaven.test.skip=true'
+				}			
+			}
         }
 
 //         stage('Tests') {
@@ -25,24 +27,31 @@ pipeline
 
         stage('Release')
         {
-            steps {
-                echo 'Release'
-                sh 'mvn package -Dmaven.test.skip=true'
-            }
+			timeout(30) {
+				steps {
+					echo 'Release'
+					sh 'mvn package -Dmaven.test.skip=true'
+				}				
+			}
+			
         }
 
         stage('Build Image')
         {
-            steps {
-                sh 'docker build -t tsudockerhub/aws-webhook:latest .'
-            }
+			timeout(30) {
+				steps {
+					sh 'docker build -t tsudockerhub/aws-webhook:latest .'
+				}
+			}
         }
 
         stage('Run image on Container')
         {
-            steps {
-                sh 'docker run --rm -d -p 8081:8080 --name WebhookJenkins hello'
-            }
+			timeout(30) {
+				steps {
+					sh 'docker run --rm -d -p 8081:8080 --name WebhookJenkins hello'
+				}
+			}
         }
 
         stage('Upload image & Update container')
