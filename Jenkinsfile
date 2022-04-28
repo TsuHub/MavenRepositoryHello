@@ -8,12 +8,6 @@ pipeline
 
     stages
     {
-        stage('Allow SUDO to docker') {
-            steps {
-                sh 'sudo chmod 666 /var/run/docker.sock'
-            }
-        }
-
         stage('Build')
         {
             steps {
