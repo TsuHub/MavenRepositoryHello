@@ -15,10 +15,10 @@ pipeline
 			}
 			
 			steps {
-				retry(3) {
+				//retry(3) {
 					sh 'mvn clean'
 					sh 'mvn install -Dmaven.test.skip=true'
-				}
+				//}
 			}
         }
 
@@ -36,10 +36,10 @@ pipeline
 			}
 			
 			steps {
-				retry(3) {
+				//retry(3) {
 					echo 'Release'
 					sh 'mvn package -Dmaven.test.skip=true'
-				}								
+				//}								
 			}
         }
 
