@@ -10,11 +10,13 @@ pipeline
     {
         stage('Build')
         {
+			options {
+				timeout(time: 30, unit: "SECONDS") 
+			}
+			
 			steps {
-				timeout(30) {
-					sh 'mvn clean'
-					sh 'mvn install -Dmaven.test.skip=true'
-				}			
+				sh 'mvn clean'
+				sh 'mvn install -Dmaven.test.skip=true'
 			}
         }
 
@@ -27,32 +29,38 @@ pipeline
 
         stage('Package')
         {
+			options {
+				timeout(time: 30, unit: "SECONDS") 
+			}
+			
 			steps {
 				retry(3) {
-					timeout(30) {
-						echo 'Release'
-						sh 'mvn package -Dmaven.test.skip=true'
-					}								
-				}
+					echo 'Release'
+					sh 'mvn package -Dmaven.test.skip=true'
+				}								
 			}
         }
 
         stage('Build Image')
         {
+			options {
+				timeout(time: 30, unit: "SECONDS") 
+			}
+			
 			steps {
-				timeout(30) {
-					sh 'docker build -t hello:latest .'
-				}
+				sh 'docker build -t hello:latest .'
 			}
         }
 
         stage('Release')
         {
+			options {
+				timeout(time: 30, unit: "SECONDS") 
+			}
+			
 			steps {
-				timeout(30) {
-					sh 'docker stop WebhookJenkins'
-					sh 'docker run --rm -d -p 8081:8080 --name WebhookJenkins hello'
-				}
+				sh 'docker stop WebhookJenkins'
+				sh 'docker run --rm -d -p 8081:8080 --name WebhookJenkins hello'
 			}
         }
 
