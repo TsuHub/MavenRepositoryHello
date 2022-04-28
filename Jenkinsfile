@@ -15,8 +15,10 @@ pipeline
 			}
 			
 			steps {
-				sh 'mvn clean'
-				sh 'mvn install -Dmaven.test.skip=true'
+				retry(3) {
+					sh 'mvn clean'
+					sh 'mvn install -Dmaven.test.skip=true'
+				}
 			}
         }
 
