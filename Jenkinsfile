@@ -13,7 +13,7 @@ pipeline
 			steps {
 				timeout(30) {
 					sh 'mvn clean'
-					//sh 'mvn install -Dmaven.test.skip=true'
+					sh 'mvn install -Dmaven.test.skip=true'
 				}			
 			}
         }
@@ -25,7 +25,7 @@ pipeline
 //             }
 //         }
 
-        stage('Release')
+        stage('Package')
         {
 			steps {
 				retry(3) {
@@ -41,21 +41,22 @@ pipeline
         {
 			steps {
 				timeout(30) {
-					sh 'docker build -t tsudockerhub/aws-webhook:latest .'
+					sh 'docker build -t hello:latest .'
 				}
 			}
         }
 
-        stage('Run image on Container')
+        stage('Release')
         {
 			steps {
 				timeout(30) {
+					sh 'docker stop WebhookJenkins'
 					sh 'docker run --rm -d -p 8081:8080 --name WebhookJenkins hello'
 				}
 			}
         }
 
-        stage('Upload image & Update container')
+        stage('Deploy')
         {
             parallel
             {
