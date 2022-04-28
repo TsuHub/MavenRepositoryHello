@@ -59,11 +59,12 @@ pipeline
 			}
 			
 			steps {
-				try {
-					sh 'docker stop WebhookJenkins'				
-				} catch (Throwable e) {
-					
+				script {
+					try {
+						sh 'docker stop WebhookJenkins'				
+					} catch (Throwable e) {}
 				}
+				
 				sh 'docker run --rm -d -p 8081:8080 --name WebhookJenkins hello'
 			}
         }
