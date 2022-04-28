@@ -3,21 +3,14 @@ pipeline
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub-credential')
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub_token')
     }
 
     stages
     {
         stage('Build')
         {
-            steps
-            {
-//                 echo 'CURRENT PATH: '
-//                 sh 'pwd'
-//
-//                 echo 'UPDATED PATH'
-//                 sh 'pwd'
-
+            steps {
                 sh 'mvn clean'
                 //sh 'mvn install -Dmaven.test.skip=true'
             }
@@ -32,8 +25,7 @@ pipeline
 
         stage('Release')
         {
-            steps
-            {
+            steps {
                 echo 'Release'
                 sh 'mvn package -Dmaven.test.skip=true'
             }
@@ -42,7 +34,7 @@ pipeline
         stage('Build Image')
         {
             steps {
-                sh 'docker build -t hello:latest .'
+                sh 'docker build -t tsudockerhub/aws-webhook:latest .'
             }
         }
 
@@ -70,7 +62,7 @@ pipeline
                     steps
                     {
                         //  docker tag local-image:tagname new-repo:tagname
-                        sh 'docker tag hello:latest tsudockerhub/aws-webhook:latest'
+                        //sh 'docker tag hello:latest tsudockerhub/aws-webhook:latest'
 
                         //  docker push new-repo:tagname
                         sh 'docker push tsudockerhub/aws-webhook:latest'
