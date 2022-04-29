@@ -25,4 +25,10 @@ The project consists of a study material on the integration of technologies and 
   <tr>
     <th>Git 2.35.3.windows.1</th>   <th>Project repository (you can use Git to act as a trigger to fire Jenkins)</th>
   </tr>
+  <tr>
+    <th>AWS EC2 Instance</th>   <th>Machine that will run the applications</th>
+  </tr>
+  <tr>
+    <th>PuTTY 0.74</th>   <th>To connect to the machine</th>
+  </tr>
 </table>
