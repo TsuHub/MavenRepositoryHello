@@ -91,7 +91,8 @@ pipeline
                         //sh 'docker tag hello:latest tsudockerhub/aws-webhook:latest'
 
                         //  docker push new-repo:tagname
-                        sh 'docker push tsudockerhub/aws-webhook:latest'
+                        //sh 'docker push tsudockerhub/aws-webhook:latest'		// O comando push é cobrado pela Amazon como saída de dados
+																				// por isso esta linha foi comentada. 
                     }
                 }
 
