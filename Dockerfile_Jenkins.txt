@@ -43,3 +43,5 @@
 #
 ## PARA EXECUÇÃO DA IMAGEM EM CONTAINER, FOI UTILIZADO:
 ## > docker run -p 8087:8080 -p 50000:50000 -v /var/jenkins_home --name MavenSpringHello maven_hello
+
+
